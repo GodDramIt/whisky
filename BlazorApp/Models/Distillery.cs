@@ -1,11 +1,13 @@
+using BlazorApp.Enums;
+
 namespace BlazorApp.Models;
 public class Distillery 
 {
     public string Name { get; set; }
     public int Id { get; set; }
-    public string Region { get; set; }
+    public Region Region { get; set; }
     
-    public Distillery(string name, int id, string region)
+    public Distillery(string name, int id, Region region)
     {
         Name = name;
         Id = id;

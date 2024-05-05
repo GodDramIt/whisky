@@ -1,30 +1,18 @@
 @page "/whiskies"
 @using BlazorApp.Models;
+@using BlazorApp.Data;
 
 <h1>Whiskies</h1>
 <p>The water of the gods...</p>
-@foreach (var whisky in Data)
+@foreach (var model in WhiskyViewModels)
 {
-    <Whisky Model="@whisky" />
+    <Whisky Model="@model" />
 }
 
 @code {
-    private List<WhiskyViewModel> Data = new();
+    private List<WhiskyViewModel> WhiskyViewModels = new();
     protected override void OnInitialized()
     {
-        GetWhiskyData();
+        WhiskyViewModels = Data.GetWhiskies();
     }
-
-    private void GetWhiskyData()    
-    {
-        Distillery macallan = new("The Macallan", 1, "Speyside");
-        List<Characteristic> mac12chars = new()
-        {
-            new Characteristic("Sherry", 1),
-            new Characteristic("Vanilla", 2)
-        };
-        WhiskyViewModel macallan12 = new("Macallan 12 Year Old", 1, 12, macallan, mac12chars);
-        Data.Add(macallan12);
-    }
-    
 }
