@@ -1,0 +1,15 @@
+@using BlazorApp.Models;
+
+<h3>@Model.Nickname</h3>
+<ul>
+    @foreach(var characteristic in Model.Characteristics)
+    {
+        <li>@characteristic.Note</li>
+    }
+</ul>
+
+
+@code {
+    [Parameter]
+    public WhiskyViewModel Model {get; set;}
+}
